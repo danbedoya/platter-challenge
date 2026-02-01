@@ -1,1 +1,7 @@
 /* Platter Challenge – custom styles */
+/* Platter Challenge – custom styles */
+
+.product-card__rating {
+  display: inline-flex;
+  gap: 2px;
+}

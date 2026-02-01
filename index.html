@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Platter Challenge – Best Sellers</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="bg-white antialiased">
   <main>
@@ -32,6 +33,26 @@
       </div>
     </section>
   </main>
+  <template id="product-card-template">
+    <li class="best-sellers__item">
+      <article class="product-card">
+        <a href="#" class="block group">
+          <div class="relative aspect-square rounded-[10px] overflow-hidden bg-gray-100">
+            <img class="product-card__img product-card__img--primary absolute inset-0 w-full h-full object-cover transition-opacity duration-200 group-hover:opacity-0" src="" alt="" />
+            <img class="product-card__img product-card__img--secondary absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-200 group-hover:opacity-100" src="" alt="" />
+          </div>
+          <div class="mt-3 px-2 flex flex-col gap-2">
+            <h3 class="product-card__title text-base font-normal leading-tight line-clamp-2"></h3>
+            <div class="flex items-center gap-1 text-xs">
+              <span class="product-card__rating" aria-hidden="true"></span>
+              <span class="product-card__reviews"></span>
+            </div>
+            <p class="product-card__price font-semibold text-base"></p>
+          </div>
+        </a>
+      </article>
+    </li>
+  </template>
   <script src="script.js"></script>
 </body>
 </html>
