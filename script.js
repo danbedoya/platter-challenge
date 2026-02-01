@@ -49,4 +49,41 @@ function renderProducts() {
   track.appendChild(fragment);
 }
 
-document.addEventListener('DOMContentLoaded', renderProducts);
+/**
+ * product-list-view: one component for mobile (grid + Show More) and desktop (carousel, later).
+ * This commit implements only mobile: grid + expand/collapse via Show More. Vanilla JS.
+ */
+class ProductListView extends HTMLElement {
+  connectedCallback() {
+    const wrap = this.querySelector('[data-grid-wrap]');
+    const btn = this.querySelector('[data-show-more]');
+    if (!wrap || !btn) return;
+    this._wrap = wrap;
+    this._btn = btn;
+    this._boundOnClick = this._onClick.bind(this);
+    btn.addEventListener('click', this._boundOnClick);
+  }
+  disconnectedCallback() {
+    if (this._btn && this._boundOnClick) {
+      this._btn.removeEventListener('click', this._boundOnClick);
+    }
+  }
+  _onClick() {
+    const wrap = this._wrap;
+    const btn = this._btn;
+    const isExpanded = wrap.classList.toggle('is-expanded');
+    btn.setAttribute('aria-expanded', isExpanded);
+    if (isExpanded) {
+      wrap.style.maxHeight = wrap.scrollHeight + 'px';
+    } else {
+      wrap.style.maxHeight = '566px';
+    }
+  }
+}
+if (!customElements.get('product-list-view')) {
+  customElements.define('product-list-view', ProductListView);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderProducts();
+});

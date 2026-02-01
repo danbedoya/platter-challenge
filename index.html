@@ -9,9 +9,9 @@
 </head>
 <body class="bg-white antialiased">
   <main>
-    <section aria-labelledby="best-sellers-title" class="max-w-[1920px] mx-auto px-6 py-9">
+    <section class="best-sellers max-w-[1920px] mx-auto px-6 py-9" aria-labelledby="best-sellers-heading">
       <header class="flex flex-col items-center md:flex-row md:justify-between mb-6">
-        <h2 id="best-sellers-title" class="text-center text-[28px] font-bold md:text-[40px] md:font-black">
+        <h2 id="best-sellers-heading" class="text-center text-[28px] font-bold md:text-[40px] md:font-black">
           Best Sellers
         </h2>
         <a href="#best-sellers" class="hidden md:inline-flex items-center gap-2 font-semibold text-sm hover:opacity-70">
@@ -19,18 +19,16 @@
         </a>
       </header>
 
-      <div class="best-sellers__carousel-wrapper">
-        <div class="best-sellers__grid-wrap" id="best-sellers-grid">
-          <ul class="best-sellers__track" data-products-track aria-label="Product list">
+      <product-list-view>
+        <div class="best-sellers__grid-wrap" id="best-sellers-grid" data-grid-wrap>
+          <ul class="best-sellers__track grid grid-cols-2 gap-x-[11px] gap-y-[12px] w-full max-w-full min-w-0 md:flex md:gap-6 md:overflow-x-auto md:snap-x md:snap-mandatory md:py-6" data-products-track aria-label="Product list">
             <!-- Product cards will be injected here -->
           </ul>
         </div>
-        <div class="md:hidden mt-4">
-          <button type="button" class="w-full py-4 rounded-full font-semibold bg-[#1C1D1D] text-white" data-show-more aria-expanded="false" aria-controls="best-sellers-grid">
-            Show More
-          </button>
-        </div>
-      </div>
+        <button type="button" class="show-more-btn md:hidden mt-4 w-full py-4 rounded-full font-semibold bg-[#1C1D1D] text-white" data-show-more aria-expanded="false" aria-controls="best-sellers-grid">
+          Show More
+        </button>
+      </product-list-view>
     </section>
   </main>
   <template id="product-card-template">

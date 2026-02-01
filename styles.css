@@ -5,3 +5,25 @@
   display: inline-flex;
   gap: 2px;
 }
+
+/* Mobile: grid wrap collapses to show ~4 cards; expand via Show More */
+.best-sellers__grid-wrap {
+  overflow: hidden;
+  transition: max-height 0.35s ease-out;
+}
+@media (max-width: 767px) {
+  .best-sellers__grid-wrap:not(.is-expanded) {
+    max-height: 566px;
+  }
+  .best-sellers__item {
+    min-width: 0;
+  }
+  .product-card {
+    min-width: 0;
+  }
+}
+@media (min-width: 768px) {
+  .best-sellers__grid-wrap {
+    max-height: none;
+  }
+}
