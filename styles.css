@@ -1,19 +1,141 @@
 /* Platter Challenge – custom styles */
-/* Platter Challenge – custom styles */
 
-.product-card__rating {
-  display: inline-flex;
-  gap: 2px;
+:root {
+  --color-neutral-black: #231F20;
+  --color-text-primary: #1C1D1D;
+  --color-reviews: #707070;
+  --color-badge-green: #5C7962;
+  --color-white: #FFFFFF;
+  --color-black: #000000;
 }
 
-/* Mobile: grid wrap collapses to show ~4 cards; expand via Show More */
+/* Section title: Source Serif 4 */
+.best-sellers__heading {
+  font-family: 'Source Serif 4', Georgia, serif;
+}
+
+/* Screen-reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Badges */
+.product-card__badge {
+  font-family: 'Bebas Neue', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-align: center;
+  height: 18px;
+  padding: 0 8px;
+  border-radius: 100px;
+  border: 1px solid var(--color-black);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-card__badge:empty {
+  display: none;
+}
+.product-card__badge--left {
+  background-color: var(--color-white);
+  color: var(--color-neutral-black);
+}
+.product-card__badge--right {
+  background-color: var(--color-badge-green);
+  color: var(--color-white);
+}
+@media (min-width: 768px) {
+  .product-card__badge {
+    font-size: 10px;
+  }
+}
+
+/* Product title: Bebas Neue */
+.product-card__title {
+  font-family: 'Bebas Neue', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .product-card__title {
+    font-size: 18px;
+  }
+}
+
+/* Price: Poppins */
+.product-card__price {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+/* Reviews: Poppins, small */
+.product-card__reviews {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 11px;
+  color: var(--color-reviews);
+}
+
+/* Star images (SVG) */
+.product-card__rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+.product-card__star {
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.product-card__star--empty {
+  opacity: 0.35;
+}
+@media (min-width: 768px) {
+  .product-card__star {
+    width: 12px;
+    height: 12px;
+  }
+}
+.product-card__star--half {
+  display: none;
+}
+@media (min-width: 768px) {
+  .product-card__star--half {
+    display: block;
+  }
+}
+
+/* Show More button: Poppins */
+.show-more-btn {
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+/* Mobile: grid wrap collapses to show ~4 cards; expand via Show More (JS sets measured max-height) */
 .best-sellers__grid-wrap {
   overflow: hidden;
   transition: max-height 0.35s ease-out;
 }
 @media (max-width: 767px) {
   .best-sellers__grid-wrap:not(.is-expanded) {
-    max-height: 566px;
+    max-height: 566px; /* fallback before JS runs; JS overwrites with measured height */
+  }
+  .best-sellers__grid-wrap.is-expanded {
+    max-height: none;
   }
   .best-sellers__item {
     min-width: 0;
