@@ -6,8 +6,8 @@
   <title>Platter Challenge – Best Sellers</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,9..32,700;0,9..32,900&display=swap" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@700;900&family=Bebas+Neue&family=Poppins:wght@400;500;600&display=optional" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="bg-white antialiased">
@@ -20,8 +20,8 @@
           </h2>
           <a href="#best-sellers" class="hidden md:inline-flex items-center gap-2 font-semibold text-sm text-[#5C553A] leading-[1.4] hover:opacity-70">
             Shop All Best Sellers
-            <span class="inline-flex shrink-0">
-              <img src="assets/arrow-narrow-right.svg" alt="" width="20" height="20" class="inline-block" />
+            <span class="inline-flex shrink-0" style="width:20px;height:20px;">
+              <img src="assets/arrow-narrow-right.svg" alt="" width="20" height="20" class="inline-block" style="width:20px;height:20px;display:block;" />
             </span>
           </a>
         </div>
@@ -52,8 +52,8 @@
       <article class="product-card">
         <a href="#" class="block group">
           <div class="product-card__image-wrap relative aspect-square rounded-[10px] overflow-hidden bg-gray-100">
-            <img class="product-card__img product-card__img--primary absolute inset-0 w-full h-full object-cover transition-opacity duration-200 group-hover:opacity-0" src="" alt="" />
-            <img class="product-card__img product-card__img--secondary absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-200 group-hover:opacity-100" src="" alt="" />
+            <img class="product-card__img product-card__img--primary absolute inset-0 w-full h-full object-cover transition-opacity duration-200 group-hover:opacity-0" src="" alt="" width="400" height="400" decoding="async" />
+            <img class="product-card__img product-card__img--secondary absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-200 group-hover:opacity-100" src="" alt="" width="400" height="400" loading="lazy" decoding="async" />
             <div class="product-card__badges absolute top-2 left-2 right-3 flex justify-between items-center gap-2.5 pointer-events-none">
               <span class="product-card__badge product-card__badge--left product-card__badge--left-mobile" aria-hidden="true"></span>
               <span class="product-card__badge product-card__badge--left product-card__badge--left-desktop" aria-hidden="true"></span>
@@ -74,6 +74,7 @@
       </article>
     </li>
   </template>
-  <script src="script.js"></script>
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -23,15 +23,22 @@ function renderProducts() {
   if (!template || !track) return;
 
   const fragment = document.createDocumentFragment();
-  PRODUCTS.forEach((product) => {
+  PRODUCTS.forEach((product, index) => {
     const clone = template.content.cloneNode(true);
     const link = clone.querySelector('a');
     link.href = '#product-' + product.id;
 
-    clone.querySelector('.product-card__img--primary').src = product.image;
-    clone.querySelector('.product-card__img--primary').alt = product.title;
-    clone.querySelector('.product-card__img--secondary').src = product.imageSecondary;
-    clone.querySelector('.product-card__img--secondary').alt = product.title + ' (hover)';
+    const imgPrimary = clone.querySelector('.product-card__img--primary');
+    imgPrimary.src = product.image;
+    imgPrimary.alt = product.title;
+    if (index < 4) {
+      imgPrimary.setAttribute('fetchpriority', 'high');
+    } else {
+      imgPrimary.setAttribute('loading', 'lazy');
+    }
+    const imgSecondary = clone.querySelector('.product-card__img--secondary');
+    imgSecondary.src = product.imageSecondary;
+    imgSecondary.alt = product.title + ' (hover)';
 
     const badgeLeftMobile = clone.querySelector('.product-card__badge--left-mobile');
     const badgeLeftDesktop = clone.querySelector('.product-card__badge--left-desktop');
