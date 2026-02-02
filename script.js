@@ -1,16 +1,131 @@
 // Platter Challenge – Vanilla JS
 
 const PRODUCTS = [
-  { id: 1, title: 'OUTSIDE VIBES T-SHIRT SUNSHINE', price: '$104.95', image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400', imageSecondary: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400', badgeLeft: 'BEST SELLER', badgeRight: null, rating: 5, reviewCount: '1,234' },
-  { id: 2, title: 'HIKE BOTTLE OUTSIDE VIBES FOREST GREEN', price: '$104.95', image: 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400', imageSecondary: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400', badgeLeft: 'BEST SELLER', badgeRight: 'SAVE 15%', badgeRightMobile: 'SAVE 15%', rating: 5, reviewCount: '1,234' },
-  { id: 3, title: 'TRAIL RUNNER SHORTS MIDNIGHT', price: '$89.95', image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400', imageSecondary: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400', badgeLeft: 'BEST SELLER', badgeRight: null, badgeRightMobile: 'SAVE 15%', rating: 4.5, reviewCount: '456', desktopLastStarPartial: true },
-  { id: 4, title: 'CAMP MUG OUTSIDE VIBES TERRA', price: '$34.95', image: 'https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=400', imageSecondary: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=400', badgeLeft: null, badgeLeftDesktop: 'BEST SELLER', badgeRight: 'SAVE 15%', badgeRightMobile: null, rating: 5, reviewCount: '2,100' },
-  { id: 5, title: 'SUMMIT FLEECE HOODIE SAGE', price: '$119.95', image: 'https://images.unsplash.com/photo-1584735175097-719d848f8449?w=400', imageSecondary: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400', badgeLeft: 'BEST SELLER', badgeRight: null, rating: 5, reviewCount: '678' },
-  { id: 6, title: 'TREK BACKPACK 22L STORM', price: '$134.95', image: 'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=400', imageSecondary: 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400', badgeLeft: 'BEST SELLER', badgeRight: null, rating: 4.5, reviewCount: '334' },
-  { id: 7, title: 'OUTSIDE VIBES CAP NAVY', price: '$44.95', image: 'https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400', imageSecondary: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400', badgeLeft: null, badgeRight: null, rating: 5, reviewCount: '567' },
-  { id: 8, title: 'WATERPROOF JACKET SLATE', price: '$189.95', image: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400', imageSecondary: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400', badgeLeft: 'BEST SELLER', badgeRight: null, rating: 5, reviewCount: '890' },
-  { id: 9, title: 'TRAIL LEGGINGS DUSK', price: '$94.95', image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400', imageSecondary: 'https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=400', badgeLeft: 'BEST SELLER', badgeRight: null, rating: 4.5, reviewCount: '412' },
-  { id: 10, title: 'FIRE PIT OUTSIDE VIBES COPPER', price: '$249.95', image: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=400', imageSecondary: 'https://images.unsplash.com/photo-1584735175097-719d848f8449?w=400', badgeLeft: 'BEST SELLER', badgeRight: null, rating: 5, reviewCount: '1,023' },
+  {
+    id: 1,
+    title: "OUTSIDE VIBES T-SHIRT SUNSHINE",
+    price: "$104.95",
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",
+    imageSecondary:
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400",
+    badgeLeft: "BEST SELLER",
+    badgeRight: null,
+    rating: 5,
+    reviewCount: "1,234",
+  },
+  {
+    id: 2,
+    title: "HIKE BOTTLE OUTSIDE VIBES FOREST GREEN",
+    price: "$104.95",
+    image: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400",
+    imageSecondary:
+      "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400",
+    badgeLeft: "BEST SELLER",
+    badgeRight: "SAVE 15%",
+    badgeRightMobile: "SAVE 15%",
+    rating: 5,
+    reviewCount: "1,234",
+  },
+  {
+    id: 3,
+    title: "TRAIL RUNNER SHORTS MIDNIGHT",
+    price: "$89.95",
+    image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400",
+    imageSecondary:
+      "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400",
+    badgeLeft: "BEST SELLER",
+    badgeRight: null,
+    badgeRightMobile: "SAVE 15%",
+    rating: 4.5,
+    reviewCount: "456",
+    desktopLastStarPartial: true,
+  },
+  {
+    id: 4,
+    title: "CAMP MUG OUTSIDE VIBES TERRA",
+    price: "$34.95",
+    image: "https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=400",
+    imageSecondary:
+      "https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=400",
+    badgeLeft: null,
+    badgeLeftDesktop: "BEST SELLER",
+    badgeRight: "SAVE 15%",
+    badgeRightMobile: null,
+    rating: 5,
+    reviewCount: "2,100",
+  },
+  {
+    id: 5,
+    title: "SUMMIT FLEECE HOODIE SAGE",
+    price: "$119.95",
+    image: "https://images.unsplash.com/photo-1584735175097-719d848f8449?w=400",
+    imageSecondary:
+      "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400",
+    badgeLeft: "BEST SELLER",
+    badgeRight: null,
+    rating: 5,
+    reviewCount: "678",
+  },
+  {
+    id: 6,
+    title: "TREK BACKPACK 22L STORM",
+    price: "$134.95",
+    image: "https://images.unsplash.com/photo-1603808033192-082d6919d3e1?w=400",
+    imageSecondary:
+      "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400",
+    badgeLeft: "BEST SELLER",
+    badgeRight: null,
+    rating: 4.5,
+    reviewCount: "334",
+  },
+  {
+    id: 7,
+    title: "OUTSIDE VIBES CAP NAVY",
+    price: "$44.95",
+    image: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=400",
+    imageSecondary:
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400",
+    badgeLeft: null,
+    badgeRight: null,
+    rating: 5,
+    reviewCount: "567",
+  },
+  {
+    id: 8,
+    title: "WATERPROOF JACKET SLATE",
+    price: "$189.95",
+    image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400",
+    imageSecondary:
+      "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400",
+    badgeLeft: "BEST SELLER",
+    badgeRight: null,
+    rating: 5,
+    reviewCount: "890",
+  },
+  {
+    id: 9,
+    title: "TRAIL LEGGINGS DUSK",
+    price: "$94.95",
+    image: "https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400",
+    imageSecondary:
+      "https://images.unsplash.com/photo-1597045566677-8cf032ed6634?w=400",
+    badgeLeft: "BEST SELLER",
+    badgeRight: null,
+    rating: 4.5,
+    reviewCount: "412",
+  },
+  {
+    id: 10,
+    title: "FIRE PIT OUTSIDE VIBES COPPER",
+    price: "$249.95",
+    image: "https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=400",
+    imageSecondary:
+      "https://images.unsplash.com/photo-1584735175097-719d848f8449?w=400",
+    badgeLeft: "BEST SELLER",
+    badgeRight: null,
+    rating: 5,
+    reviewCount: "1,023",
+  },
 ];
 
 const STAR_COUNT = 5;
@@ -31,14 +146,19 @@ function renderProducts() {
     const imgPrimary = clone.querySelector('.product-card__img--primary');
     imgPrimary.src = product.image;
     imgPrimary.alt = product.title;
+    imgPrimary.decoding = 'async';
     if (index < 4) {
       imgPrimary.setAttribute('fetchpriority', 'high');
+      imgPrimary.removeAttribute('loading');
     } else {
-      imgPrimary.setAttribute('loading', 'lazy');
+      imgPrimary.loading = 'lazy';
     }
     const imgSecondary = clone.querySelector('.product-card__img--secondary');
     imgSecondary.src = product.imageSecondary;
-    imgSecondary.alt = product.title + ' (hover)';
+    imgSecondary.loading = 'lazy';
+    imgSecondary.decoding = 'async';
+    imgSecondary.alt = '';
+    imgSecondary.setAttribute('aria-hidden', 'true');
 
     const badgeLeftMobile = clone.querySelector('.product-card__badge--left-mobile');
     const badgeLeftDesktop = clone.querySelector('.product-card__badge--left-desktop');
@@ -46,8 +166,8 @@ function renderProducts() {
     const badgeRightDesktop = clone.querySelector('.product-card__badge--right-desktop');
     if (badgeLeftMobile) badgeLeftMobile.textContent = (product.badgeLeftMobile ?? product.badgeLeft) || '';
     if (badgeLeftDesktop) badgeLeftDesktop.textContent = (product.badgeLeftDesktop ?? product.badgeLeft) || '';
-    if (badgeRightMobile) badgeRightMobile.textContent = product.badgeRightMobile || '';
-    if (badgeRightDesktop) badgeRightDesktop.textContent = product.badgeRight || '';
+    if (badgeRightMobile) badgeRightMobile.textContent = (product.badgeRightMobile ?? product.badgeRight) || '';
+    if (badgeRightDesktop) badgeRightDesktop.textContent = (product.badgeRightDesktop ?? product.badgeRight) || '';
 
     clone.querySelector('.product-card__title').textContent = product.title;
     clone.querySelector('.product-card__price').textContent = product.price;
@@ -96,8 +216,8 @@ function renderProducts() {
 }
 
 const MOBILE_MAX_WIDTH = 767;
+const SCROLLBAR_MIN_WIDTH = 768;
 const DESKTOP_MIN_WIDTH = 1280;
-const MOBILE_COLLAPSED_HEIGHT_PX = 556;
 const IMAGES_LOAD_WAIT_MS = 4000;
 
 class ProductListView extends HTMLElement {
@@ -142,7 +262,7 @@ class ProductListView extends HTMLElement {
         this.classList.add('is-ready');
       });
     }
-    if (window.innerWidth >= DESKTOP_MIN_WIDTH) {
+    if (window.innerWidth >= SCROLLBAR_MIN_WIDTH) {
       this._initScrollbar();
       setTimeout(() => this._updateScrollbar(), 100);
     }
@@ -176,9 +296,20 @@ class ProductListView extends HTMLElement {
 
   _applyCollapsed() {
     this._wrap.classList.remove('is-expanded');
-    this._wrap.style.maxHeight = MOBILE_COLLAPSED_HEIGHT_PX + 'px';
+    this._wrap.setAttribute('data-expanded', 'false');
     this._btn.setAttribute('aria-expanded', 'false');
     if (this._showMoreWrap) this._showMoreWrap.style.display = '';
+
+    this._wrap.style.maxHeight = 'none';
+    requestAnimationFrame(() => {
+      const track = this._track;
+      if (track && track.children.length >= 4) {
+        const wrapRect = this._wrap.getBoundingClientRect();
+        const item3Rect = track.children[3].getBoundingClientRect();
+        const collapsedHeight = Math.ceil(item3Rect.bottom - wrapRect.top);
+        this._wrap.style.maxHeight = collapsedHeight + 'px';
+      }
+    });
   }
 
   _applyExpanded() {
@@ -198,8 +329,9 @@ class ProductListView extends HTMLElement {
   _applyDesktop() {
     this._wrap.classList.remove('is-expanded');
     this._wrap.style.maxHeight = '';
+    this._wrap.removeAttribute('data-expanded');
     if (this._showMoreWrap) this._showMoreWrap.style.display = '';
-    if (window.innerWidth >= DESKTOP_MIN_WIDTH) {
+    if (window.innerWidth >= SCROLLBAR_MIN_WIDTH) {
       this._initScrollbar();
     } else {
       this._teardownScrollbar();
@@ -223,6 +355,7 @@ class ProductListView extends HTMLElement {
         if (this._hasUserExpanded) {
           this._wrap.classList.add('is-expanded');
           this._wrap.style.maxHeight = '';
+          this._wrap.setAttribute('data-expanded', 'true');
           if (this._showMoreWrap) this._showMoreWrap.style.display = 'none';
         } else {
           this._applyCollapsed();
@@ -292,20 +425,25 @@ class ProductListView extends HTMLElement {
     const m = this._getScrollbarMetrics();
     if (!m || m.maxScroll <= 0) return;
     const rect = this._scrollbarTrack.getBoundingClientRect();
-    const x = e.clientX - rect.left;
     const trackBarWidth = this._scrollbar.offsetWidth;
-    this._track.scrollLeft = (x / trackBarWidth) * m.maxScroll;
+    const thumbWidth = this._scrollbarThumb.offsetWidth;
+    let x = e.clientX - rect.left - thumbWidth / 2;
+    x = Math.max(0, Math.min(trackBarWidth - thumbWidth, x));
+    const ratio = trackBarWidth - thumbWidth > 0 ? x / (trackBarWidth - thumbWidth) : 0;
+    this._track.scrollLeft = ratio * m.maxScroll;
   }
 
   _onThumbPointerDown(e) {
     e.preventDefault();
     const m = this._getScrollbarMetrics();
     if (!m || m.maxScroll <= 0) return;
-    const startX = e.clientX;
-    const startScrollLeft = this._track.scrollLeft;
     const trackBarWidth = this._scrollbar.offsetWidth;
     const thumbWidth = this._scrollbarThumb.offsetWidth;
     const thumbMaxLeft = trackBarWidth - thumbWidth;
+    if (thumbMaxLeft <= 0) return;
+
+    const startX = e.clientX;
+    const startScrollLeft = this._track.scrollLeft;
 
     const onPointerMove = (moveE) => {
       const dx = moveE.clientX - startX;
@@ -329,22 +467,5 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   const listView = document.querySelector('product-list-view');
   if (!listView?.init) return;
-
-  function runInit() {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        listView.init();
-      });
-    });
-  }
-
-  if (window.innerWidth <= MOBILE_MAX_WIDTH) {
-    if (document.readyState === 'complete') {
-      setTimeout(runInit, 50);
-    } else {
-      window.addEventListener('load', () => setTimeout(runInit, 50), { once: true });
-    }
-  } else {
-    runInit();
-  }
+  requestAnimationFrame(() => listView.init());
 });
