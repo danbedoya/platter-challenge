@@ -12,23 +12,34 @@
 </head>
 <body class="bg-white antialiased">
   <main>
-    <section class="best-sellers max-w-[1920px] mx-auto px-6 py-9" aria-labelledby="best-sellers-heading">
-      <header class="flex flex-col items-center md:flex-row md:justify-between mb-6">
-        <h2 id="best-sellers-heading" class="best-sellers__heading text-center text-[28px] font-bold md:text-[40px] md:font-black">
-          Best Sellers
-        </h2>
-        <a href="#best-sellers" class="hidden md:inline-flex items-center gap-2 font-semibold text-sm hover:opacity-70">
-          Shop All Best Sellers
-        </a>
+    <section class="best-sellers" aria-labelledby="best-sellers-heading">
+      <header class="best-sellers__header">
+        <div class="best-sellers__header-inner flex flex-col items-center md:flex-row md:justify-between mb-6 md:mb-[38px]">
+          <h2 id="best-sellers-heading" class="best-sellers__heading text-center text-[28px] font-bold md:text-[40px] md:font-black">
+            Best Sellers
+          </h2>
+          <a href="#best-sellers" class="hidden md:inline-flex items-center gap-2 font-semibold text-sm text-[#5C553A] leading-[1.4] hover:opacity-70">
+            Shop All Best Sellers
+            <span class="inline-flex shrink-0">
+              <img src="assets/arrow-narrow-right.svg" alt="" width="20" height="20" class="inline-block" />
+            </span>
+          </a>
+        </div>
       </header>
 
       <product-list-view>
         <div class="best-sellers__grid-wrap" id="best-sellers-grid" data-grid-wrap>
-          <ul class="best-sellers__track grid grid-cols-2 gap-x-[11px] gap-y-[12px] w-full max-w-full min-w-0 md:flex md:gap-6 md:overflow-x-auto md:snap-x md:snap-mandatory md:py-6" data-products-track aria-label="Product list">
-            <!-- Product cards will be injected here -->
+          <ul class="best-sellers__track" data-products-track aria-label="Product list">
           </ul>
         </div>
-        <div class="md:hidden mt-4" data-show-more-wrap>
+        <div class="best-sellers__scrollbar-wrap hidden" data-scrollbar-wrapper>
+          <div class="best-sellers__scrollbar" data-scrollbar>
+            <div class="best-sellers__scrollbar-track" data-scrollbar-track>
+              <div class="best-sellers__scrollbar-thumb" data-scrollbar-thumb></div>
+            </div>
+          </div>
+        </div>
+        <div class="md:hidden mt-3" data-show-more-wrap>
           <button type="button" class="show-more-btn w-full py-4 rounded-full font-semibold bg-[#1C1D1D] text-white" data-show-more aria-expanded="false" aria-controls="best-sellers-grid">
             Show More
           </button>
@@ -43,12 +54,14 @@
           <div class="product-card__image-wrap relative aspect-square rounded-[10px] overflow-hidden bg-gray-100">
             <img class="product-card__img product-card__img--primary absolute inset-0 w-full h-full object-cover transition-opacity duration-200 group-hover:opacity-0" src="" alt="" />
             <img class="product-card__img product-card__img--secondary absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-200 group-hover:opacity-100" src="" alt="" />
-            <div class="product-card__badges absolute top-2 left-2 right-2 flex justify-between items-center gap-2.5 pointer-events-none">
-              <span class="product-card__badge product-card__badge--left"></span>
-              <span class="product-card__badge product-card__badge--right"></span>
+            <div class="product-card__badges absolute top-2 left-2 right-3 flex justify-between items-center gap-2.5 pointer-events-none">
+              <span class="product-card__badge product-card__badge--left product-card__badge--left-mobile" aria-hidden="true"></span>
+              <span class="product-card__badge product-card__badge--left product-card__badge--left-desktop" aria-hidden="true"></span>
+              <span class="product-card__badge product-card__badge--right product-card__badge--right-mobile" aria-hidden="true"></span>
+              <span class="product-card__badge product-card__badge--right product-card__badge--right-desktop" aria-hidden="true"></span>
             </div>
           </div>
-          <div class="mt-3 px-2 flex flex-col gap-2">
+          <div class="mt-3 px-2 pb-[9px] flex flex-col gap-2">
             <h3 class="product-card__title font-normal line-clamp-2"></h3>
             <div class="flex items-center gap-1 text-xs">
               <span class="product-card__rating" aria-hidden="true"></span>

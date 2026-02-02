@@ -1,4 +1,113 @@
-/* Platter Challenge – custom styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+}
+
+main {
+  width: 100%;
+  max-width: 100%;
+}
+
+product-list-view {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.best-sellers {
+  width: 100%;
+  max-width: 100%;
+  padding: 2.25rem 1.5rem;
+  overflow-x: hidden;
+}
+
+@media (min-width: 1280px) {
+  .best-sellers {
+    padding-block: 80px 0;
+    padding-inline: 0;
+  }
+  .best-sellers__header-inner {
+    padding-inline: 128px;
+    box-sizing: border-box;
+  }
+  .best-sellers__heading {
+    line-height: 1.2;
+  }
+}
+
+.best-sellers__heading {
+  font-family: 'Source Serif 4', Georgia, serif;
+}
+
+.best-sellers__grid-wrap {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease-out;
+}
+
+.best-sellers__track {
+  --slides-per-view: 4.8;
+  --carousel-gap: 24px;
+
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--carousel-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overscroll-behavior-x: contain;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.best-sellers__track::-webkit-scrollbar {
+  display: none;
+}
+
+.best-sellers__track .best-sellers__item {
+  --card-width: calc(
+    (100% - (var(--carousel-gap) * (var(--slides-per-view) - 1)))
+    / var(--slides-per-view)
+  );
+  flex: 0 0 auto;
+  width: var(--card-width);
+  max-width: 355px;
+  min-width: 0;
+  scroll-snap-align: start;
+  overflow: hidden;
+  contain: layout;
+}
+
+.best-sellers__track .product-card,
+.best-sellers__track .product-card__image-wrap,
+.best-sellers__track .best-sellers__item a {
+  min-width: 0;
+}
+
+.best-sellers__track .product-card__image-wrap {
+  width: 100%;
+}
+
+.best-sellers__track .product-card {
+  width: 100%;
+}
+
+.product-card__img--primary { transition: opacity 0.2s; }
+.product-card__img--secondary { transition: opacity 0.2s; }
+.group:hover .product-card__img--primary { opacity: 0; }
+.group:hover .product-card__img--secondary { opacity: 1; }
 
 :root {
   --color-neutral-black: #231F20;
@@ -9,12 +118,6 @@
   --color-black: #000000;
 }
 
-/* Section title: Source Serif 4 */
-.best-sellers__heading {
-  font-family: 'Source Serif 4', Georgia, serif;
-}
-
-/* Screen-reader only */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -27,7 +130,6 @@
   border: 0;
 }
 
-/* Badges */
 .product-card__badge {
   font-family: 'Bebas Neue', system-ui, sans-serif;
   font-weight: 400;
@@ -50,17 +152,38 @@
   background-color: var(--color-white);
   color: var(--color-neutral-black);
 }
+.product-card__badge--left-desktop {
+  display: none;
+}
 .product-card__badge--right {
   background-color: var(--color-badge-green);
   color: var(--color-white);
+  margin-left: auto;
+}
+.product-card__badge--right-desktop {
+  display: none;
 }
 @media (min-width: 768px) {
+  .best-sellers__grid-wrap {
+    max-height: none;
+  }
+  .product-card__badge--left-mobile {
+    display: none;
+  }
+  .product-card__badge--left-desktop {
+    display: inline-flex;
+  }
+  .product-card__badge--right-mobile {
+    display: none;
+  }
+  .product-card__badge--right-desktop {
+    display: inline-flex;
+  }
   .product-card__badge {
     font-size: 10px;
   }
 }
 
-/* Product title: Bebas Neue */
 .product-card__title {
   font-family: 'Bebas Neue', system-ui, sans-serif;
   font-size: 16px;
@@ -76,21 +199,26 @@
   }
 }
 
-/* Price: Poppins */
 .product-card__price {
   font-family: 'Poppins', system-ui, sans-serif;
   font-weight: 500;
   color: var(--color-text-primary);
 }
 
-/* Reviews: Poppins, small */
 .product-card__reviews {
   font-family: 'Poppins', system-ui, sans-serif;
   font-size: 11px;
   color: var(--color-reviews);
 }
+@media (min-width: 1280px) {
+  .product-card__price {
+    line-height: 1;
+  }
+  .product-card__reviews {
+    font-size: 12px;
+  }
+}
 
-/* Star images (SVG) */
 .product-card__rating {
   display: inline-flex;
   align-items: center;
@@ -105,47 +233,118 @@
 .product-card__star--empty {
   opacity: 0.35;
 }
-@media (min-width: 768px) {
-  .product-card__star {
-    width: 12px;
-    height: 12px;
-  }
-}
 .product-card__star--half {
   display: none;
 }
-@media (min-width: 768px) {
-  .product-card__star--half {
-    display: block;
-  }
-}
 
-/* Show More button: Poppins */
 .show-more-btn {
   font-family: 'Poppins', system-ui, sans-serif;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  background: #1C1D1D;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
 }
 
-/* Mobile: grid wrap collapses to show ~4 cards; expand via Show More (JS sets measured max-height) */
-.best-sellers__grid-wrap {
-  overflow: hidden;
-  transition: max-height 0.35s ease-out;
+.best-sellers__scrollbar-wrap {
+  display: none;
 }
+
 @media (max-width: 767px) {
+  product-list-view:not(.is-ready) .best-sellers__grid-wrap,
+  product-list-view:not(.is-ready) [data-show-more-wrap] {
+    opacity: 0;
+    pointer-events: none;
+  }
+  product-list-view.is-ready .best-sellers__grid-wrap,
+  product-list-view.is-ready [data-show-more-wrap] {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.15s ease-out;
+  }
+
+  .best-sellers__track {
+    --slides-per-view: 2.2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 11px;
+    overflow-x: hidden;
+  }
+  .best-sellers__track .best-sellers__item {
+    width: auto;
+    max-width: none;
+  }
   .best-sellers__grid-wrap:not(.is-expanded) {
-    max-height: 566px; /* fallback before JS runs; JS overwrites with measured height */
+    max-height: 556px;
   }
   .best-sellers__grid-wrap.is-expanded {
     max-height: none;
   }
-  .best-sellers__item {
-    min-width: 0;
-  }
+  .best-sellers__item,
   .product-card {
     min-width: 0;
   }
 }
-@media (min-width: 768px) {
-  .best-sellers__grid-wrap {
-    max-height: none;
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .best-sellers__track {
+    --slides-per-view: 3.2;
+    padding: 1.5rem 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .best-sellers__track {
+    margin-left: 128px;
+    margin-right: 0;
+    margin-bottom: 52px;
+    width: calc(100% - 128px);
+    max-width: calc(100% - 128px);
+    padding: 0;
+  }
+  .best-sellers__scrollbar-wrap {
+    display: block !important;
+    margin-left: 128px;
+    margin-right: 128px;
+    width: calc(100% - 256px);
+    max-width: calc(100% - 256px);
+  }
+  .best-sellers__scrollbar {
+    width: 100%;
+    height: 6px;
+    background: #DDD6D7;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+  }
+  .best-sellers__scrollbar-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  .best-sellers__scrollbar-thumb {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 4px;
+    min-width: 40px;
+    background: #231F20;
+    border-radius: 100px;
+    transition: height 0.15s ease;
+    cursor: grab;
+  }
+  .best-sellers__scrollbar-thumb:hover,
+  .best-sellers__scrollbar-thumb:active {
+    height: 6px;
+  }
+  .best-sellers__scrollbar-thumb:active {
+    cursor: grabbing;
   }
 }
