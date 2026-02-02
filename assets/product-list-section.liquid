@@ -1,0 +1,98 @@
+{% doc %}
+  Product list section – “Best sellers” style.
+
+  Renders a product list with a heading and an optional link.
+  The header (heading + link) is handled in this section.
+  The product grid/list is delegated to the `resource-list` snippet, which in turn
+  uses the `_product-card` snippet for each product.
+
+  @example
+  {% section 'product-list' %}
+{% enddoc %}
+
+{% assign list_collection = section.settings.collection %}
+{% assign heading = section.settings.heading | default: 'sections.product_list.default_heading' | t %}
+{% assign link_text = section.settings.link_text | default: 'sections.product_list.default_link_text' | t %}
+{% assign link_url = section.settings.link_url %}
+{% if link_url == blank and list_collection %}
+  {% assign link_url = list_collection.url %}
+{% endif %}
+{% assign max_products = section.settings.max_products | default: 10 | plus: 0 %}
+
+<section
+  class="best-sellers"
+  id="section-{{ section.id }}"
+  aria-labelledby="product-list-heading-{{ section.id }}"
+>
+  <header class="best-sellers__header">
+    <div class="best-sellers__header-inner flex flex-col items-center md:flex-row md:justify-between mb-6 md:mb-[38px]">
+      <h2
+        id="product-list-heading-{{ section.id }}"
+        class="best-sellers__heading text-center text-[28px] font-bold md:text-[40px] md:font-black"
+      >
+        {{ heading }}
+      </h2>
+      <a
+        href="{{ link_url }}"
+        class="hidden md:inline-flex items-center gap-2 font-semibold text-sm text-[#5C553A] leading-[1.4] hover:opacity-70"
+      >
+        {{ link_text }}
+        <span class="inline-flex shrink-0">
+          <img src="{{ 'arrow-narrow-right.svg' | asset_url }}" alt="" width="20" height="20" class="inline-block" />
+        </span>
+      </a>
+    </div>
+  </header>
+
+  {% render 'resource-list',
+    collection: list_collection,
+    max_products: max_products,
+    section_id: section.id
+  %}
+</section>
+
+{% schema %}
+{
+  "name": "Product list",
+  "tag": "section",
+  "class": "section-product-list",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Best Sellers"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Link text",
+      "default": "Shop All Best Sellers"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link URL"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "max_products",
+      "label": "Max products",
+      "min": 4,
+      "max": 16,
+      "step": 1,
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product list"
+    }
+  ]
+}
+{% endschema %}

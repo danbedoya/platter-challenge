@@ -1,0 +1,66 @@
+{% doc %}
+  Renders a resource/product list with custom scrolling behavior and a
+  "Show more" control for mobile.
+
+  This snippet wraps:
+  - The product list track (`<ul>`)
+  - A custom horizontal scrollbar
+  - A "Show more" button on mobile
+
+  Instead of using `content_for 'block'` with blocks, each item in the list
+  is rendered with the `_product-card` snippet.
+
+  @param {collection} [collection] - Collection whose products will be listed.
+  @param {number} [max_products] - Maximum number of products to render.
+  @param {string} [section_id] - Section id used to generate unique HTML ids.
+
+  @example
+  {% render 'resource-list',
+    collection: collection,
+    max_products: 8,
+    section_id: section.id
+  %}
+{% enddoc %}
+
+{% assign list_collection = collection | default: nil %}
+{% assign max_products = max_products | default: 10 | plus: 0 %}
+{% assign section_id = section_id | default: '' %}
+{% assign grid_id = section_id | append: '-grid' %}
+
+<product-list-view>
+  <div class="best-sellers__grid-wrap" id="best-sellers-{{ grid_id }}" data-grid-wrap>
+    <ul class="best-sellers__track" data-products-track aria-label="Product list">
+      {% if list_collection != blank %}
+        {% for product in list_collection.products limit: max_products %}
+          {% if forloop.first %}
+            {% render '_product-card', product: product, loading: 'eager' %}
+          {% else %}
+            {% render '_product-card', product: product, loading: 'lazy' %}
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% for i in (1..max_products) %}
+          {% render '_product-card', product: nil %}
+        {% endfor %}
+      {% endif %}
+    </ul>
+  </div>
+  <div class="best-sellers__scrollbar-wrap hidden" data-scrollbar-wrapper>
+    <div class="best-sellers__scrollbar" data-scrollbar>
+      <div class="best-sellers__scrollbar-track" data-scrollbar-track>
+        <div class="best-sellers__scrollbar-thumb" data-scrollbar-thumb></div>
+      </div>
+    </div>
+  </div>
+  <div class="md:hidden mt-3" data-show-more-wrap>
+    <button
+      type="button"
+      class="show-more-btn w-full py-4 rounded-full font-semibold bg-[#1C1D1D] text-white"
+      data-show-more
+      aria-expanded="false"
+      aria-controls="best-sellers-{{ grid_id }}"
+    >
+      Show More
+    </button>
+  </div>
+</product-list-view>
